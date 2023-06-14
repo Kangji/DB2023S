@@ -1,0 +1,101 @@
+title,director,price,name,age,class
+1917,Sam Mendes,10000,Ava,51,premium
+1917,Sam Mendes,10000,Mason,22,premium
+1917,Sam Mendes,10000,Charlotte,54,vip
+1917,Sam Mendes,10000,Sophia,22,vip
+Alien,Ridley Scott,15000,Emily,72,basic
+Alien,Ridley Scott,15000,Jacob,29,basic
+Alien,Ridley Scott,15000,Aria,18,premium
+American History X,Tony Kaye,10000,Elijah,72,vip
+Anand,Hrishikesh Mukherjee,16000,Olivia,18,basic
+Anand,Hrishikesh Mukherjee,16000,Harper,37,premium
+Andhadhun,Sriram Raghavan,20000,John,17,premium
+Andhadhun,Sriram Raghavan,20000,Wyatt,17,vip
+Avengers: Endgame,Anthony Russo,15000,Mason,33,vip
+Avengers: Infinity War,Anthony Russo,15000,Olivia,36,premium
+Avengers: Infinity War,Anthony Russo,15000,Owen,49,vip
+Ayla: The Daughter of War,Can Ulkay,17000,Mateo,71,basic
+Ayla: The Daughter of War,Can Ulkay,17000,Ethan,62,premium
+Capharnaüm,Nadine Labaki,15000,Ellie,26,vip
+Casablanca,Michael Curtiz,25000,Noah,22,basic
+Casablanca,Michael Curtiz,25000,Wyatt,67,basic
+Casablanca,Michael Curtiz,25000,Sebastian,21,premium
+City Lights,Charles Chaplin,25000,Noah,35,premium
+City Lights,Charles Chaplin,25000,Wyatt,81,premium
+Coco,Lee Unkrich,17000,William,81,premium
+Django Unchained,Quentin Tarantino,25000,Ava,63,basic
+Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,Stanley Kubrick,17000,Daniel,47,basic
+Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,Stanley Kubrick,17000,Sebastian,66,basic
+Eternal Sunshine of the Spotless Mind,Michel Gondry,10000,Abigail,62,basic
+Eternal Sunshine of the Spotless Mind,Michel Gondry,10000,Mia,69,premium
+Eternal Sunshine of the Spotless Mind,Michel Gondry,10000,Camila,17,vip
+Fight Club,David Fincher,10000,Olivia,65,vip
+Gisaengchung,Bong Joon Ho,8500,Abigail,86,vip
+Gladiator,Ridley Scott,17000,Michael,36,basic
+Good Will Hunting,Gus Van Sant,8500,Harper,46,basic
+Good Will Hunting,Gus Van Sant,8500,Samuel,71,basic
+Goodfellas,Martin Scorsese,15000,Jacob,72,basic
+Hotaru no haka,Isao Takahata,10000,Michael,90,premium
+"Il buono, il brutto, il cattivo",Sergio Leone,17000,Layla,62,vip
+Inglourious Basterds,Quentin Tarantino,15000,Alexander,66,basic
+Inglourious Basterds,Quentin Tarantino,15000,Joseph,23,vip
+Inglourious Basterds,Quentin Tarantino,15000,Scarlett,50,vip
+It's a Wonderful Life,Frank Capra,17000,Nora,19,basic
+It's a Wonderful Life,Frank Capra,17000,Daniel,53,vip
+La vita è bella,Roberto Benigni,20000,Mason,36,basic
+Miracle in cell NO.7,Mehmet Ada _ztekin,15000,James,38,basic
+Miracle in cell NO.7,Mehmet Ada _ztekin,15000,Sofia,46,premium
+Modern Times,Charles Chaplin,20000,Ava,67,vip
+Mononoke-hime,Hayao Miyazaki,20000,Elizabeth,56,premium
+Oldeuboi,Chan-wook Park,10000,Layla,77,basic
+Oldeuboi,Chan-wook Park,10000,Mason,49,basic
+Oldeuboi,Chan-wook Park,10000,Mateo,73,basic
+Once Upon a Time in America,Sergio Leone,8500,Mia,70,vip
+Once Upon a Time in the West,Sergio Leone,8500,Olivia,71,basic
+Paths of Glory,Stanley Kubrick,17000,Ethan,67,basic
+Raiders of the Lost Ark,Steven Spielberg,10000,Henry,47,premium
+Raiders of the Lost Ark,Steven Spielberg,10000,Joseph,57,premium
+Requiem for a Dream,Darren Aronofsky,10000,Emma,27,vip
+Saving Private Ryan,Steven Spielberg,17000,Scarlett,54,basic
+Saving Private Ryan,Steven Spielberg,17000,Luna,66,premium
+Sen to Chihiro no kamikakushi,Hayao Miyazaki,17000,Jackson,23,premium
+Shichinin no samurai,Akira Kurosawa,20000,Sophia,57,basic
+Shichinin no samurai,Akira Kurosawa,20000,Penelope,43,premium
+Snatch,Guy Ritchie,10000,Jackson,63,basic
+Soorarai Pottru,Sudha Kongara,20000,Camila,32,premium
+Spider-Man: Into the Spider-Verse,Bob Persichetti,25000,Aria,26,basic
+Spider-Man: Into the Spider-Verse,Bob Persichetti,25000,Elizabeth,88,basic
+Spider-Man: Into the Spider-Verse,Bob Persichetti,25000,Luna,85,vip
+Star Wars,George Lucas,15000,Aria,35,vip
+Star Wars,George Lucas,15000,Hazel,18,vip
+Star Wars,George Lucas,15000,Mila,63,vip
+Star Wars: Episode V - The Empire Strikes Back,Irvin Kershner,20000,Evelyn,76,vip
+The Dark Knight,Christopher Nolan,17000,Jackson,90,vip
+The Dark Knight Rises,Christopher Nolan,17000,Charlotte,66,premium
+The Dark Knight Rises,Christopher Nolan,17000,Jack,38,vip
+The Departed,Martin Scorsese,20000,Henry,80,basic
+The Departed,Martin Scorsese,20000,Madison,39,basic
+The Departed,Martin Scorsese,20000,Avery,87,premium
+The Godfather: Part II,Francis Ford Coppola,25000,Logan,21,vip
+The Great Dictator,Charles Chaplin,15000,Camila,35,basic
+The Great Dictator,Charles Chaplin,15000,Owen,68,basic
+The Great Dictator,Charles Chaplin,15000,Eleanor,20,premium
+The Green Mile,Frank Darabont,15000,Jacob,83,vip
+The Green Mile,Frank Darabont,15000,Noah,36,vip
+The Intouchables,Olivier Nakache,25000,Mason,52,basic
+The Lion King,Roger Allers,8500,Aiden,18,premium
+The Lives of Others,Florian Henckel von Donnersmarck,20000,Penelope,48,basic
+The Lives of Others,Florian Henckel von Donnersmarck,20000,John,51,premium
+The Lord of the Rings: The Fellowship of the Ring,Peter Jackson,20000,Wyatt,86,vip
+The Lord of the Rings: The Return of the King,Peter Jackson,20000,Nora,44,premium
+The Matrix,Lana Wachowski,8500,Alexander,90,vip
+The Matrix,Lana Wachowski,8500,James,73,vip
+The Shining,Stanley Kubrick,20000,Eleanor,61,basic
+The Shining,Stanley Kubrick,20000,Samuel,82,premium
+The Usual Suspects,Bryan Singer,15000,Ellie,46,premium
+The Usual Suspects,Bryan Singer,15000,Liam,34,premium
+Tumbbad,Rahi Anil Barve,10000,Nora,82,vip
+Vikram Vedha,Gayatri,17000,Benjamin,61,basic
+Vikram Vedha,Gayatri,17000,Olivia,78,premium
+WALL·E,Andrew Stanton,10000,Mason,70,basic
+Witness for the Prosecution,Billy Wilder,25000,Logan,88,basic
