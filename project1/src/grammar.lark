@@ -1,0 +1,243 @@
+%import common._STRING_ESC_INNER
+%import common.SIGNED_INT       -> INT
+%import common.LETTER           -> C
+%import common.DIGIT            -> N
+%import common.WS
+%ignore WS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Keyword Terminals
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// When defining terminal, "asdf"i means case insensitive string.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Parenthesis
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+LP : "("
+RP : ")"
+DQ : "\""
+SQ : "'"
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tokens
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+STR :           DQ _STRING_ESC_INNER DQ | SQ _STRING_ESC_INNER SQ   // "asdf" | 'asdf'
+DATE.9 :        N N N N "-" N N "-" N N                             // YYYY-MM-DD
+IDENTIFIER :    C (C | "_")*                                        // [a-zA-Z][_a-zA-Z]*
+NULL :          "null"i
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Data Types
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+TYPE_INT :      "int"i
+TYPE_CHAR :     "char"i
+TYPE_DATE :     "date"i
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Operators
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+NOT :           "not"i
+AND :           "and"i
+OR :            "or"i
+IS :            "is"i
+LT :            "<"
+GT :            ">"
+LE :            "<="
+GE :            ">="
+EQ :            "="
+NE :            "!="
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Query Keywords
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE :        "create"i       // 2.1 CREATE TABLE
+TABLE :         "table"i        // 2.1 CREATE TABLE     2.2 DROP TABLE
+PRIMARY :       "primary"i      // 2.1 CREATE TABLE
+KEY :           "key"i          // 2.1 CREATE TABLE
+FOREIGN :       "foreign"i      // 2.1 CREATE TABLE
+REFERENCES :    "references"i   // 2.1 CREATE TABLE
+
+DROP :          "drop"i         // 2.2 DROP TABLE
+
+EXPLAIN :       "explain"i      // 2.3 EXPLAIN / DESCRIBE / DESC
+DESCRIBE :      "describe"i     // 2.3 EXPLAIN / DESCRIBE / DESC
+DESC :          "desc"i         // 2.3 EXPLAIN / DESCRIBE / DESC
+
+INSERT :        "insert"i       // 2.4 INSERT
+INTO :          "into"i         // 2.4 INSERT
+VALUES :        "values"i       // 2.4 INSERT
+
+DELETE :        "delete"i       // 2.5 DELETE
+FROM :          "from"i         // 2.5 DELETE           2.6 SELECT
+
+SELECT :        "select"i       // 2.6 SELECT
+AS :            "as"i           // 2.6 SELECT
+WHERE :         "where"i        // 2.6 SELECT           2.8 UPDATE
+
+SHOW :          "show"i         // 2.7 SHOW TABLES
+TABLES :        "tables"i       // 2.7 SHOW TABLES
+
+UPDATE :        "update"i       // 2.8 UPDATE
+SET :           "set"i          // 2.8 UPDATE
+
+EXIT :          "exit"i         // 2.9 EXIT
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Rules
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Entrypoint
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+?command :                      create_table_query              // 2.1 CREATE TABLE
+                                | drop_table_query              // 2.2 DROP TABLE
+                                | explain_query                 // 2.3 EXPLAIN / DESCRIBE / DESC
+                                | describe_query                // 2.3 EXPLAIN / DESCRIBE / DESC
+                                | desc_query                    // 2.3 EXPLAIN / DESCRIBE / DESC
+                                | insert_query                  // 2.4 INSERT
+                                | delete_query                  // 2.5 DELETE
+                                | select_query                  // 2.6 SELECT
+                                | show_tables_query             // 2.7 SHOW TABLES
+                                | update_query                  // 2.8 UPDATE
+                                | exit_cmd                      // 2.9 EXIT
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Common Rules
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+table_name_list :               table_name ("," table_name)*
+table_name :                    IDENTIFIER
+
+column_name_list :              LP column_name ("," column_name)* RP
+column_name :                   IDENTIFIER
+
+table_column :                  [table_name "."] column_name
+
+value_list :                    LP value ("," value)* RP
+value :                         INT | STR | DATE | NULL
+
+comp_op :                       LT | GT | EQ | GE | LE | NE
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Where Clause
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+where_clause :                  WHERE boolean_expr
+boolean_expr :                  boolean_term (or_boolean_term)*
+
+or_boolean_term :               OR boolean_term
+boolean_term :                  boolean_factor (and_boolean_factor)*
+
+and_boolean_factor :            AND boolean_factor
+boolean_factor :                [NOT] boolean_test
+boolean_test :                  parenthesized_boolean_expr
+                                | predicate
+
+parenthesized_boolean_expr :    LP boolean_expr RP
+predicate :                     comparison_predicate
+                                | null_predicate
+
+comparison_predicate :          operand comp_op operand
+null_predicate :                operand IS [NOT] NULL
+
+operand :                       table_column | value
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.1 CREATE TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create_table_query :            CREATE TABLE table_name table_element_list
+
+table_element_list :            LP table_element ("," table_element)* RP
+table_element :                 column_definition
+                                | table_constraint_definition
+
+column_definition :             column_name data_type [NOT NULL]
+data_type :                     TYPE_INT
+                                | TYPE_CHAR LP INT RP
+                                | TYPE_DATE
+
+table_constraint_definition :   primary_key_constraint
+                                | referential_constraint
+
+primary_key_constraint :        PRIMARY KEY column_name_list
+referential_constraint :        FOREIGN KEY column_name_list REFERENCES table_name column_name_list
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.2 DROP TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+drop_table_query :              DROP TABLE table_name
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.3 EXPLAIN / DESCRIBE / DESC
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+explain_query:                  EXPLAIN table_name
+describe_query:                 DESCRIBE table_name
+desc_query:                     DESC table_name
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.4 INSERT
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+insert_query :                  INSERT INTO table_name [column_name_list] VALUES value_list
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.5 DELETE
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+delete_query :                  DELETE FROM table_name [where_clause]
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.6 SELECT
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+select_query :                  SELECT select_list FROM table_name_list [where_clause]
+select_list :                   "*"
+                                | table_column ("," table_column)*
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.7 SHOW TABLES
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+show_tables_query :             SHOW TABLES
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.8 UPDATE
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+update_query :                  UPDATE table_name set_clause [where_clause]
+set_clause :                    SET column_name EQ value
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2.9 EXIT
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+exit_cmd :                      EXIT
