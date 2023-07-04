@@ -12,11 +12,11 @@ from query import *
 class Client:
     """Database client. Each method represents a single query."""
 
-    HOST = 'astronaut.snu.ac.kr'
+    HOST = '***'
     PORT = 7000
-    USER = 'DB2017_18054'
-    PASSWD = 'DB2017_18054'
-    DB = 'DB2017_18054'
+    USER = '***'
+    PASSWD = '***'
+    DB = '***'
     CHARSET = 'utf8'
 
     def __init__(self, host=HOST, port=PORT, user=USER, passwd=PASSWD, db=DB, charset=CHARSET):
